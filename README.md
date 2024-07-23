@@ -10,4 +10,16 @@ In examples folder, you can find examples to how to use different instruments in
 
 ## Installation
 
+### Driver
+
+Follow the step in [backend installation](https://pyvisa.readthedocs.io/en/latest/introduction/getting.html#backend), you can install python backend or National instrument (NI), for this examples I use a [NI-VISA](https://www.ni.com/es/support/downloads/drivers/download.ni-visa.html#544206) driver.  
+If you want to use NI GPIB-USB-HS+ same have to install [NI-488.2 driver](https://www.ni.com/es/support/downloads/drivers/download.ni-488-2.html#544048).
+
+### Python
+
+- Install an IDE for python, I recomend VS code
+- Install Python XXXX
+- Create venv 
+- Install requeriments.txt
+- Run *test_VISA.py* and see the connected instrument in terminal
 

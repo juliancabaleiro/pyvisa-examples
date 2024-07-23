@@ -17,7 +17,7 @@ Dash is running on http://127.0.0.1:8050/
 
 This code show a simple example to how perform a simple AC measurement with HP34401 and show this in live update plot in dash app.
 
-![Alt Text](https://github.com/juliancabaleiro/pyvisa-examples/doc/images/dash_LiveUpdate_HP34401.gif)
+![Alt Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/dash_LiveUpdate_HP34401.gif)
 
 
 
