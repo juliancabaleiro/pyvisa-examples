@@ -4,9 +4,6 @@ The objective is obtain a fluid live update.
 Use a subprocess to control the instrument and communicate with dash
 usign shared array.
 
-This form to send the figure is more efficently.
-The app is branded because exist unknown conflict with
-multiprocessing Queue, remove this and the app work well
 """
 
 import pyvisa

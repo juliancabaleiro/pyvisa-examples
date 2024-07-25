@@ -1,3 +1,7 @@
+"""
+This code list all the instruments connected and try to
+communicate with them
+"""
 import pyvisa
 
 rm=pyvisa.ResourceManager()
@@ -11,5 +15,7 @@ for i in a:
         print("could not be opened:",i)
 
 """
+Output
+------
 
 """
