@@ -1,4 +1,7 @@
 """
+In this example you can see how to control the Lighting Impulse 
+output, with the calibration of the load and the calibrated output.
+
 Press F1 and turn on the insturment to acces a remote menu config
 The EOS is set on EOI but with the termiantor set in empty works.
 I change the EOSto CR, restart the insturment, set EOI restart again
