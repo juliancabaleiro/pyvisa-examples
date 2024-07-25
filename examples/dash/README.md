@@ -19,6 +19,10 @@ This code show a simple example to how perform a simple AC measurement with HP34
 
 ![Alt Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/dash_LiveUpdate_HP34401.gif)
 
+The best way to understand it is to use a diagram to see the parts and their relationship.
+
+![Alt Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/LiveUpdate-diagram.png)
+
 
 
 
