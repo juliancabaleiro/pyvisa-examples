@@ -12,36 +12,35 @@ while measuring
 
 import pyvisa
 import time
-import os
-import numpy as np
-import pandas as pd
 
 rm = pyvisa.ResourceManager()
 #print(rm.list_resources())
 RIC422=rm.open_resource("GPIB0::11::INSTR")
 RIC422.read_termination = ''
 RIC422.write_termination = ''
-RIC422.write("TMO 9")
-print("ID? command: ",RIC422.query("ID ?"))
-print("EMSG? command: ",RIC422.query("EMSG ?"))
-#print("STAT? command: ",RIC422.query("STAT"))
-#print("STAT? command: ",RIC422.query("ERR?;"))
-RIC422.write("REN")
-RIC422.write("SHP DC")
-RIC422.write("DCA 200")
-RIC422.write("INVL 5")
-RIC422.write("OUT1 Off")
-RIC422.write("OUT2 On")
-RIC422.write("OUT3 Off")
-RIC422.write("OUT4 Off")
-#RIC422.write("TR")
-RIC422.write("STRT")
-print("Pause to measure")
-time.sleep(10)
-print("EMSG? command: ",RIC422.query("EMSG?"))
-print("STAT? command: ",RIC422.query("STAT ?"))
-RIC422.write("STOP") #without this the insturment remain energized and ignore the panel frontal
-RIC422.write("GTL")
+try:
+  RIC422.write("TMO 9")
+  print("ID? command: ",RIC422.query("ID ?"))
+  print("EMSG? command: ",RIC422.query("EMSG ?"))
+  RIC422.write("REN")
+  RIC422.write("SHP DC")
+  RIC422.write("DCA 200")
+  RIC422.write("INVL 5")
+  RIC422.write("OUT1 Off")
+  RIC422.write("OUT2 On")
+  RIC422.write("OUT3 Off")
+  RIC422.write("OUT4 Off")
+  #RIC422.write("TR")
+  RIC422.write("STRT")
+  print("Pause to measure")
+  time.sleep(10)
+  print("EMSG? command: ",RIC422.query("EMSG?"))
+  print("STAT? command: ",RIC422.query("STAT ?"))
+  RIC422.write("STOP") #without this the insturment remain energized and ignore the panel frontal
+  RIC422.write("GTL")
+except:
+  RIC422.write("STOP") #without this the insturment remain energized and ignore the panel frontal
+  RIC422.write("GTL")
 """
 Output
 ------

@@ -7,6 +7,10 @@ All amplitude values are considered as Peak-to-Peak values.
 Because the instrument is old device use HP-IB an old version of GP-IB for this reason have different commands and communication termination must be configured for it to work correctly.  
 Basically you have to adjust the termination in *\n*.
 
+> **Danger**  
+> If communication fails regardless of why the instrument remains in the last state, probably with the output on and in remote mode, having to restart it manually or reestablishing communication to turn off the output.  
+For to avoid this, ever you need to contain the possible errors and use a safe exit sequence.
+
 ## HP3245A.py
 
 This example show you how to configure the communication and query some configuration to the instrument.
