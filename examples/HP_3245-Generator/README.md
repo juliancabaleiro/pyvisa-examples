@@ -11,6 +11,11 @@ Basically you have to adjust the termination in *\n*.
 > If communication fails regardless of why the instrument remains in the last state, probably with the output on and in remote mode, having to restart it manually or reestablishing communication to turn off the output.  
 For to avoid this, ever you need to contain the possible errors and use a safe exit sequence.
 
+## Commands
+
+This instrument have a lot of commands, it even has commands for: loop, if, math, subroutine, memory management, etc. with the aim of generation arbitrary waveforms in the instrument. In the following example I do all the calculation in Python and only load the values into the instrument memory.
+
+
 ## HP3245A.py
 
 This example show you how to configure the communication and query some configuration to the instrument.
@@ -22,6 +27,11 @@ This example show you how to generate a voltage sine wave.
 ## ACI_HP3245A.py
 
 This example show you how to generate a current sine wave.
+
+## 2CH_ACV_HP3245A.py
+
+This example show you how to generate two sine wave.  One sine wave per channel and connect
+CHA in rear panel, CHB in front pannel and open the channels separatly.
 
 ## SQV_HP3245A.py
 
