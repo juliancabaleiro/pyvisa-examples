@@ -16,9 +16,9 @@ Aditionally, a **Dash folder** contain a simple GUI developed in python using [D
 Follow the step in [backend installation](https://pyvisa.readthedocs.io/en/latest/introduction/getting.html#backend), you can install python backend or National instrument (NI), for this examples I use a [NI-VISA](https://www.ni.com/es/support/downloads/drivers/download.ni-visa.html#544206) driver.  
 If you want to use NI GPIB-USB-HS+ same have to install [NI-488.2 driver](https://www.ni.com/es/support/downloads/drivers/download.ni-488-2.html#544048).  
 In my case I used:
-- NI max version: 2023 Q4
-- NI VISA version: 2024 Q1
-- NI IEEE 488.2 version: 2023 Q3
+- **NI max** version: 2023 Q4
+- **NI VISA** version: 2024 Q1
+- **NI IEEE 488.2** version: 2023 Q3
 
 ### Check instruments in NI-MAX
 
@@ -32,9 +32,9 @@ Click on the instrument and then on *test panel button* to communicate with the 
 
 ### Python
 
-- Install an IDE for python, I recomend VS code
+- Install an IDE for python, I recomend **Visual Studio code**
 - Install **Python 3.10.11 64 bits** (I used this version)
-- Create venv 
-- Install requeriments.txt
-- Run *test_VISA.py* and see the connected instrument in terminal
+- Create **venv** 
+- Install **requeriments.txt**
+- Run **test_VISA.py** and see the connected instrument in terminal
 
