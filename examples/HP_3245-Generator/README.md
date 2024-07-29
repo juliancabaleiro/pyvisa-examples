@@ -37,6 +37,12 @@ CHA in rear panel, CHB in front pannel and open the channels separatly.
 
 This example show you how to generate a voltage square wave.
 
+## ArbitraryWave_HP3245A.py
+
+This example show you how to generate a **Arbitrary Waveform** in this case a double exponential like LI-FULL (Standard Lightning Waveform), belloe you can see the acquisiion with the oscilloscope.
+
+![Alt-Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/arb-hp3245-Wfm.png)
+
 ## Useful Links
 
 - [Datasheet](https://www.testequipmenthq.com/datasheets/Agilent-3245A-Datasheet.pdf)
