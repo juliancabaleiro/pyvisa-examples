@@ -6,7 +6,8 @@ The idea is to share examples with the simplest possible use of python so as to 
 ## Overview
 
 [PyVISA](https://pyvisa.readthedocs.io/en/latest/) is a very useful tool to automate measurements, calibrations, characterization or tests and combine this with python tools. In this repository you can find examples to program **Calibrator's**, **DMM's**, **Oscilloscopes**, A**rbitrary Waveform Generator's**, **NanoVoltimeter**, etc.   
-In examples folder, you can find examples to how to use different instruments individually or in combination with other instruments using the simplest python possible. 
+In examples folder, you can find examples to how to use different instruments individually or in combination with other instruments using the simplest python possible.  
+The idea is to share examples with the simplest possible use of python so as to not lose focus on the programming flow of the device.     
 Aditionally, a **Dash folder** contain a simple GUI developed in python using [Dash-plotly](https://plotly.com/examples/) to make measurements. For more examples you can see [nidaqmx-python-examples](https://github.com/juliancabaleiro/nidaqmx-python-examples/tree/main/examples/dash) 
 
 ## Installation
