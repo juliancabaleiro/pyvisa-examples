@@ -1,12 +1,12 @@
-# Fluke 8558 8 1/2 digit's Digital Multimeter
+# Fluke 8558 -8 1/2 digit's Digital Multimeter
 
-This high precision digital multimeter has one channel with wich it can measure DC voltage, AC voltage, DC current, AC current, resistance, frencuency, temperature.   
-Especially this instrument has the **Digitize** mode with which it allow digitalize arbitrary voltage or current waveforms.
+This high precision digital multimeter has one channel with which it can measure DC voltage, AC voltage, DC current, AC current, resistance, frequency, temperature.   
+Especially this instrument has the **Digitize** mode with which it allows to digitalize arbitrary voltage or current waveforms.
 
 ## Configure the communication
 
-The instrument was configured for USB communication. This instrument can be configured in **High Speed mode** this allow with some additionally configuration transfer the data in binary form to achieve better communication times.  
-For 1 MHz sampling frecuency, 1 s addquisition time:
+The instrument was configured for USB communication. This instrument can be configured in **High Speed mode**, this allows with some additionally configuration to transfer the data in binary form to achieve better communication times.  
+For 1 MHz sampling frequency, 1 s acquisition time:
 | Mode    | Data transfer time |
 | -------- | ------- |  
 | Normal mode      | 42.45384502410889 s   |  
