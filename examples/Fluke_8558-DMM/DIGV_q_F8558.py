@@ -59,6 +59,10 @@ F8558.write("TRIG:DEL:AUTO OFF")
 F8558.write("TRIG:DEL 0")
 F8558.write("TRIG:HOLD OFF")
 
+# Current source manually setup
+print("Configure the voltage source and press enter: ")
+input()
+
 #Launch trigger
 start = time.time()
 F8558.write("INIT:CONT ON")
@@ -70,7 +74,7 @@ l_data=len(data)
 print("Time READ command: ",finish-start)
 print("Data length: ",l_data)
 print("Data type: ", type(data))
-print("Data raw: ",data[:5])
+#print("Data raw: ",data[0:5])
 
 #save in csv
 df=pd.DataFrame(eval(data))
@@ -86,8 +90,7 @@ ax.set(xlabel='Time [s]', ylabel='Voltage [V]',
        title='Voltage Digitize with Fluke 8558A')
 ax.grid()
 fig.savefig(r"F8558\files\data.png")
-
-plt.show()
+plt.show() 
 
 """
 Output
@@ -98,6 +101,4 @@ Time READ command:  42.419824838638306
 Data length:  1000000
 Data type:  <class 'numpy.ndarray'>
 Data raw:  [3.9437  3.93864 3.93806 3.93905 3.93943]
-
 """
-

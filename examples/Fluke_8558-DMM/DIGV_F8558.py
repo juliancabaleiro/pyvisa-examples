@@ -59,6 +59,10 @@ F8558.write("TRIG:DEL:AUTO OFF")
 F8558.write("TRIG:DEL 0")
 F8558.write("TRIG:HOLD OFF")
 
+# Current source manually setup
+print("Configure the voltage source and press enter: ")
+input()
+
 #Launch trigger
 start = time.time()
 F8558.write("INIT:CONT ON")
@@ -94,10 +98,11 @@ Output
 ------
 ID:  FLUKE,8558A,624282630,1.31
 
-Time READ command:  42.45384502410889
+Configure the voltage source and press enter: 
+
+Time READ command:  42.47292923927307
 Data length:  1000000
 Data type:  <class 'numpy.ndarray'>
-Data raw:  [0.30612 0.3072  0.30736 0.30757 0.30794]
+Data raw:  [-0.97131 -0.97027 -0.96923 -0.9694  -0.96836]
 
 """
-

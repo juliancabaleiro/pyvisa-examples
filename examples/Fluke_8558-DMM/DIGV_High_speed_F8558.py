@@ -17,7 +17,7 @@ import time
 rm=pyvisa.ResourceManager()
 F8558_address="USB0::0x0F7E::0x8009::624282630::INSTR"
 F8558=rm.open_resource(F8558_address)
-#F8558.timeout = 50000
+F8558.timeout = 50000
 
 print("\nID: ",F8558.query("*IDN?"))
 
@@ -35,14 +35,14 @@ F8558.write("FORMat:DATA PACKed,4") #no query command
 #channel 
 F8558.write("ROUT:TERM FRON") #FROM or REAR
 F8558.write("ROUT:INP:GUAR OFF") # ON or OFF
-#Volt
-F8558.write("SENS:FUNC \"DIG:VOLT\"")
-F8558.write("SENS:DIG:VOLT:COUP:SIGN DC10M")
-F8558.write("SENS:DIG:VOLT:RANG 10")
+#Current
+F8558.write("SENS:FUNC \"DIG:CURR\"") 
+F8558.write("SENS:DIG:CURR:COUP DC")
+F8558.write("SENS:DIG:CURR:RANG 1")
 F8558.write("SENS:DIG:FILT 3MHZ")
 
-#Aperture time
-F8558.write("SENS:DIG:APER 7E-7")
+#Aperture time <Tsampling
+F8558.write("SENS:DIG:APER 7E-7") #7E-7
 
 #Arm setup
 F8558.write("ARM:LAY2:SOUR IMM")
@@ -50,7 +50,7 @@ F8558.write("ARM:LAY2:COUN 1") #count trigger 2
 F8558.write("ARM:LAY2:DEL:AUTO OFF")
 F8558.write("ARM:LAY2:DEL 0")
 F8558.write("ARM:LAY1:SOUR EXT")
-F8558.write("ARM:LAY1:COUN 1") #count trigger 1
+F8558.write("ARM:LAY1:COUN 1") #count trigger 1 Hasta 11
 F8558.write("ARM:LAY1:DEL:AUTO OFF")
 F8558.write("ARM:LAY1:DEL 0")
 
@@ -59,7 +59,7 @@ F8558.write("ARM:LAY1:DEL 0")
 # Max samples: 10e6 without timestamp
 
 #trigger
-F8558.write("TRIG:SOUR TIM")
+F8558.write("TRIG:SOUR TIM") 
 F8558.write("TRIG:TIM 1E-6") #frec sample in 
 F8558.write("TRIG:COUN 1E6")
 F8558.write("TRIG:DEL:AUTO OFF")
@@ -70,9 +70,15 @@ F8558.write("TRIG:HOLD OFF")
 scale_f=float(F8558.query("FORMat:DATA:SCALE?"))
 print("Scale: ",scale_f)
 
+# Current source manually setup
+print("Configure the current source and press enter: ")
+input()
+
+time.sleep(1) #Current channel settling time (to avoid undesired transients) 
+
 #Launch trigger
-start = time.time()
 F8558.write("INIT:CONT ON")
+start = time.time()
 #Read 
 data=F8558.query_binary_values("READ?",
                                 datatype="i",
@@ -81,8 +87,8 @@ data=F8558.query_binary_values("READ?",
 finish = time.time()
 
 l_data=len(data)
-print("\nTime READ command: ",finish-start)
-print("Data length: ",l_data)
+print("Time READ command: ",finish-start)
+print("Data length: ",data.shape)
 print("Data type: ", type(data))
 print("Data raw: ",data[:5])
 data=data*scale_f
@@ -98,15 +104,12 @@ t=np.linspace(0.0, l_data*ts, l_data, endpoint=False)
 #Plot data
 fig, ax = plt.subplots()
 ax.plot(t,data)
-ax.set(xlabel='Time [s]', ylabel='Voltage [V]',
-       title='Voltage Digitize High speed mode Fluke 8558A')
+ax.set(xlabel='Time [s]', ylabel='Current [A]',
+       title='Current Digitize High speed mode Fluke 8558A')
 ax.grid()
 fig.savefig(r"F8558\files\data.png")
 
 plt.show()
-
-#normal mode: 43.637638568878174 s
-#super fast mode 4.463783025741577 s
 
 """
 Output
@@ -118,12 +121,12 @@ DISP state:  0
 
 STATS:  0
 
-Scale:  1.0124046414e-08
+Scale:  2.1648416832e-09
+Configure the current source and press enter:
 
-Time READ command:  4.463783025741577
-Data length:  1000000
+Time READ command:  4.492736577987671
+Data length:  (1000000,)
 Data type:  <class 'numpy.ndarray'>
-Data raw:  [136585216 136613888 136597504 136515584 136400896]
-Data scaled:  [1.38279507 1.38308534 1.38291947 1.38209011 1.380929  ]
+Data raw:  [409346048 409702400 409493504 409354240 409272320]
+Data scaled:  [0.88616939 0.88694083 0.88648861 0.88618712 0.88600978]
 """
-

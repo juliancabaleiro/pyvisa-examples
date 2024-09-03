@@ -33,6 +33,8 @@ Simple acquisition Fluke 8558A in voltage Digitize mode with high speed transfer
 
 Simple acquisition Fluke 8558A in current Digitize mode using query_ascii_values method
 
+![Alt-Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/DIGI_F8558.png)
+
 ## DIGI_High_speed_F8558.py
 
 Simple acquisition Fluke 8558A in current Digitize mode with high speed transfer data.

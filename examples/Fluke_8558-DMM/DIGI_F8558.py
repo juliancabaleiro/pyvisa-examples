@@ -59,9 +59,15 @@ F8558.write("TRIG:DEL:AUTO OFF")
 F8558.write("TRIG:DEL 0")
 F8558.write("TRIG:HOLD OFF")
 
+# Current source manually setup
+print("Configure the current source and press enter: ")
+input()
+
+time.sleep(1) #Current channel settling time (to avoid undesired transients) 
+
 #Launch trigger
-start = time.time()
 F8558.write("INIT:CONT ON")
+start = time.time()
 #Read 
 data=F8558.query_ascii_values("READ?", container=np.array) #numpy.ndarray
 finish = time.time()
@@ -93,10 +99,11 @@ Output
 ------
 ID:  FLUKE,8558A,624282630,1.31
 
-Time READ command:  43.29007935523987
+Configure the current source and press enter:
+
+Time READ command:  43.23023462295532
 Data length:  1000000
 Data type:  <class 'numpy.ndarray'>
-Data raw:  [-1.06667  -1.066351 -1.066315 -1.066076 -1.066191]
+Data raw:  [-0.431717 -0.431229 -0.431823 -0.431752 -0.431744]
 
 """
-
