@@ -39,6 +39,13 @@ Simple acquisition Fluke 8558A in current Digitize mode using query_ascii_values
 
 Simple acquisition Fluke 8558A in current Digitize mode with high speed transfer data.
 
+## AC_F8558.py
+
+Simple AC acquisition with Fluke 8558A
+
+## DC_F8558.py
+
+Simple DC acquisition with Fluke 8558A
 
 ## Useful Links
 
