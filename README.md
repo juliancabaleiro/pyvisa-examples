@@ -29,6 +29,8 @@ With the installation of the NI driver the NI-MAX is installed, there you can li
 
 Click on the instrument and then on *test panel button* to communicate with the instrument, typically we make a query **IDN?* like *Hello world!* message to obtain the model of the instrument.
 
+__NOTE:__ some old fashioned instruments (not SCPI compliant) might require the use of `*ID?`. Also, remember to check the required termination characters in case these commands do not work. 
+
 ![Alt Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/test-visa-panel.png)
 
 ### Python
