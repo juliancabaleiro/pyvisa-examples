@@ -37,3 +37,9 @@ print("TERM? command: ",HP3245A.query("TERM?"))
 print("TRIGMODE? command: ",HP3245A.query("TRIGMODE?"))
 print("USE? command: ",HP3245A.query("USE?"))
 print("APPLY? command: ",HP3245A.query("APPLY?"))
+
+"""
+Output:
+-------
+
+"""
