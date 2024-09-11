@@ -26,6 +26,7 @@ try:
   #Test loop
   for i in DC_or:
     #Calibator set point
+    print("DC value: ",i)
     F5500.write("OUT "+str(i)+" V") 
     F5500.write("*CLS") #Sometimes disable the output and generatea error code for safetly
     time.sleep(5) #Time to change the internal circuit (if requerid)
@@ -44,3 +45,22 @@ except Exception as error:
   #Output secuence
   F5500.write("STBY")
   F5500.write("OUT 0 V, 0 Hz") 
+
+"""
+Output:
+-------
+
+
+ID:  FLUKE,5500A,7215002,2.4+1.3+2.0+*
+
+DC value:  -1000
+DC value:  -800
+DC value:  -500
+DC value:  -200
+DC value:  0
+DC value:  200
+DC value:  500
+DC value:  800
+DC value:  1000
+
+"""

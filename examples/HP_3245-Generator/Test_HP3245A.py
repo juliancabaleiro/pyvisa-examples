@@ -42,4 +42,22 @@ print("APPLY? command: ",HP3245A.query("APPLY?"))
 Output:
 -------
 
+
+General query command
+ID? command:  HP3245
+IDN? command:  HEWLETT PACKARD
+IMP? command:       0
+ERR? command:       0
+ADDR? command:       5
+OUTPUT? command:   0.0000000E+00
+PAUSED? command:       0
+RANGE? command:   1.0000000E+00
+READY? command:       1
+REFIN? command:  INT
+REV? command:    2843
+SER? command:  0000A00000
+TERM? command:  FRONT
+TRIGMODE? command:     OFF
+USE? command:       0
+APPLY? command:  DCV
 """
