@@ -1,30 +1,47 @@
 """
-How take measurements and the statistic with R&S RTO 2044
-with a complet configuration and using the High definition mode
+AC caracterization of the specific probe using a RTO 2044 oscilloscope and FLuke 5500 calibrator
+and save the data in .xlsx file
 
-Input
------
-AC 1 Vrms; frec 50 Hz
+Notes:
+------
+- You can implement and algorithm to change time scale based on frecuency, but I am interested in
+knowing the frecuency response in a specific configuration
 """
 import pyvisa
 import time
+import os
 import numpy as np
 import pandas as pd
 
 rm = pyvisa.ResourceManager()
 RTO2044 = rm.open_resource('USB0::0x0AAD::0x0197::1329.7002k44-300157::INSTR')
+F5500 = rm.open_resource('GPIB0::2::INSTR')
 RTO2044.write("*RST")
+F5500.write("*RST")
+
 print("ID: ",RTO2044.query("*IDN?"))
+print("ID: ",F5500.query("*IDN?"))
+
+#test values
+AC_rms=5
+AC_frec=[50,60,100,500,1000,2000,5000,6000,8000,10000]
 
 #user parameters
-rto_scale = 0.4 #V
+rto_scale = 0.2 #V
 t_scale = 5e-3 #s
 att = 1 #0.1 o 1
 trgL = 0 #nivel de trigger
+path=r"F5500_AC.xlsx" #path for data file
+
+#Fluke 5500 configuration
+F5500.write("EARTH OPEN") #OPEN
+F5500.write("LOWS TIED") #OPEN
+F5500.write("DC_OFFSET 0 V")
+#F5500.write("LIMIT 750 V, -750 V")
 
 #Start message
 com="'"
-start_msj=com[0]+"Start the measurement and statistic test"+com[0]
+start_msj=com[0]+"Start AC measurement "+com[0]
 
 #display configuration
 RTO2044.write("DISPlay:DIAGram:LABels ON") #enable axis labels
@@ -83,10 +100,6 @@ RTO2044.write("ACQuire:SRReal 100e+6") #ADC sampling frencuency [10 GHz or 20 GH
 #External attenuation (allow correct a custom attenuator)
 RTO2044.write("CHANnel4:EATScale LIN") #attenuation mode
 RTO2044.write("CHANnel4:EATTenuation "+str(att)) #attenuation factor
-#Probe manual attenuation
-#RTO2044.write("PROBe1:SETup:ATTenuation:MODE MANual") #Set manual configuration of the probe
-#RTO2044.write("PROBe1:SETup:ATTenuation:UNIT V") #unit of the probe
-#RTO2044.write("PROBe1:SETup:ATTenuation:MANual 1000") #manual attenuation
 
 #HD- High Definition mode
 RTO2044.write("HDEFinition:STATe ON") #Activate the High Definition mode in all the channels
@@ -120,7 +133,18 @@ RTO2044.write("MEASurement1:ARNames ON") # Enable prefix to identify the measure
 RTO2044.write("MEASurement1:STATistics:ENABle ON") # Enable statistic over the measurements
 RTO2044.write("MEASurement1:CLEar") # clean the statistic history
 
-#defines and list to save the data
+#define auxiliar variables
+data = {
+        "frec":AC_frec,
+        "pk":[],
+        "amplitud":[],
+        "rms_pk":[],
+        "rms_amp":[],
+        "std_pk":[],
+        "std_amp":[],
+        "mean":[],
+        "mean_std":[]
+}
 pk_l=[]
 amp_l=[]
 std_pk_l=[]
@@ -130,15 +154,18 @@ rms_amp_l=[]
 mean_l=[]
 mean_std_l=[]
 
-#start measurement
-RTO2044.write("RUNContinous") # start continuous acquisition (RUNSingle,STOP)
-
 try:
-  #loop test
-  for i in range(5):
-    # Source configuration (if requerid)
+  #Measure loop
+  for i in AC_frec:
 
-    time.sleep(20) #settling time
+    #Calibator set point
+    print("Frecuency: ", i)
+    F5500.write("OUT "+str(AC_rms)+" V, "+str(i)+" Hz") 
+    F5500.write("*CLS") #Sometimes disable the output and generatea error code for safetly
+    time.sleep(5) #Time to change the internal circuit (if requerid)
+    F5500.write("OPER") #Enable the output
+    time.sleep(15) #Settling time in the load
+
     #measure
     RTO2044.write("MEASurement1:CLEar") # clean statistics history
     time.sleep(5) #time to trigger the needed waveform
@@ -152,18 +179,52 @@ try:
     mean_l.append(RTO2044.query("MEASurement1:RESult:AVG? MEAN")) #take form the mean parameter the average statistic
     mean_std_l.append(RTO2044.query("MEASurement1:RESult:STDDev? MEAN"))
 
-  print("pk",len(pk_l))
-  print("amplitud",len(amp_l))
-  print("std_pk",len(std_pk_l))
-  print("std_amp",len(std_amp_l))
-  print("rms_pk",len(rms_pk_l))
-  print("rms_amp",len(rms_amp_l))
-  print("mean",len(mean_l))
-  print("mean_std",len(mean_std_l))
+  #Using the query function all the values ​​stored in the list are of type str
 
-  #save the data in some file extension
+  #save the data in a file
+  data["pk"]=np.array(pk_l,dtype=float)
+  data["amplitud"]=np.array(amp_l,dtype=float)
+  data["std_pk"]=np.array(std_pk_l,dtype=float)
+  data["std_amp"]=np.array(std_amp_l,dtype=float)
+  data["rms_pk"]=np.array(rms_pk_l,dtype=float)
+  data["rms_amp"]=np.array(rms_amp_l,dtype=float)
+  data["mean"]=np.array(mean_l,dtype=float)
+  data["mean_std"]=np.array(mean_std_l,dtype=float)
+
+  #check the dimention for convert in dataframe
+  print("pk len: ",len(data["pk"]))
+  print("amplitud len: ",len(data["amplitud"]))
+  print("std_pk len: ",len(data["std_pk"]))
+  print("std_amp len: ",len(data["std_amp"]))
+  print("rms_pk len: ",len(data["rms_pk"]))
+  print("rms_amp len: ",len(data["rms_amp"]))
+  print("mean len: ",len(data["mean"]))
+  print("mean_std len: ",len(data["mean_std"]))
+
+  df = pd.DataFrame(data)
+  print(df)
+  df.to_excel(path,index=False,
+              columns=["frec",
+                        "pk",
+                        "amplitud",
+                        "std_pk",
+                        "std_amp",
+                        "mean",
+                        "mean_std"
+                        ])
   
-except Exception as e:
-  #output secuence
-  print(e)
+  #Output secuence
+  F5500.write("STBY")
+  F5500.write("OUT 0 V, 0 Hz")
+except Exception as error:
+  print("Error ocurred, Output secuence")
+  print("The error is: ",error)
+  #Output secuence
+  F5500.write("STBY")
+  F5500.write("OUT 0 V, 0 Hz") 
 
+"""
+Output:
+-------
+
+"""

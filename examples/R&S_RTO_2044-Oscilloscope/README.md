@@ -6,6 +6,8 @@ This is a high perfonace oscilloscope therefore the configuration of this is mor
 -  Have a lot of commands for configure the layout of the the screen you can create figures, waveforms, measurements displays, change the sizes order that, print mensages or values in the figures, etc.
 - Have a ADC that always acquire at 10 or 20 GS/s and use a undersamplig technique (tipically required), for that the channel configuration have a lot of option to select
 - Have a probe configuration menu that have a lot of options to add external attenuation and more
+- The offset can affect the RMS measurement due how the osciloscope implement this internally, see [offset changes RMS measurement](https://www.rohde-schwarz.com/us/faq/offset-changes-rms-measurement-faq_78704-634624.html)
+- For more accurate measurement I recommend you use external trigger
 
 
 ## Useful Links
