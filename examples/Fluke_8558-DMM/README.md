@@ -47,6 +47,31 @@ Simple AC acquisition with Fluke 8558A
 
 Simple DC acquisition with Fluke 8558A
 
+## CuasiContinuos_DIGV_F8558.py
+
+Acquire in digitize mode periodically without missing data points using a external trigger and for loop. This code not work for all combination of digitize configuration and externall trigger frecuency, below you can see a table with more information, for n_acquisition=10.  
+
+Ext trg frec [Hz] | trg_tim [s] | trg_count [#] | python time [s] | Continuous acquisition
+|--|--|--|--|--|
+| 0.1 |1E-6 | 1E6 |9.97|No |
+| 0.5 |1E-6 | 1E6 |5.97| No|
+| 0.8 |1E-6 | 1E6 |4.96 | Yes|
+| 1 |1E-6 | 1E6 |4.95 | Yes|
+| 2 |1E-6 | 1E6 |4.45 | No|
+| 3 |1E-6 | 1E6 |4.6 | No|
+| 0.5 |1E-3 | 1E3 |1.99 | Yes |
+| 0.8 |1E-3 | 1E3 |1.99 | No |
+| 1 |1E-3 | 1E3 |1.99 | Yes|
+| 2 |1E-3 | 1E3 |1.49 | No|
+
+Some acquisitions
+
+![Alt-Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/CuasiContinuos_DIGV_F8558.png)
+
+![Alt-Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/CuasiContinuos_DIGV_F8558_t1_s1.png)
+
+![Alt-Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/CuasiContinuos_DIGV_F8558_t1_0-5.png)
+
 ## Useful Links
 
 - [Product Specifications](https://s3.amazonaws.com/download.flukecal.com/pub/literature/8558A___pseng0700.pdf)
