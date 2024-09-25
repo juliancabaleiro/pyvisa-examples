@@ -15,8 +15,6 @@ DC_or=[-1000,-800,-500,-200,0,200,500,800,1000]
 
 #Calibrator Setup
 F5700.write("*RST")
-#F5700.write("EARTH OPEN") #OPEN or TIED
-#F5700.write("LOWS OPEN") #OPEN or TIED
 F5700.write("DC_OFFSET 0 V")
 #F5700.write("LIMIT 750 V, -750 V")
 

@@ -17,8 +17,6 @@ AC_frec=[50,60,100,500,1000,2000,5000,6000,8000,10000]
 
 #Calibrator Setup
 F5700.write("*RST")
-#F5700.write("EARTH OPEN") #OPEN or TIED
-#F5700.write("LOWS OPEN") #OPEN or TIED
 F5700.write("DC_OFFSET 0 V")
 F5700.write("LIMIT 750 V, -750 V")
 
