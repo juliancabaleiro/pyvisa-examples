@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 Simple acquisition Fluke 8558A in current Digitize mode.
 query_ascii_values method
 

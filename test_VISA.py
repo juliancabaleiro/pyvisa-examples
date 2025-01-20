@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 This code list all the instruments connected and try to
 communicate with them
 """

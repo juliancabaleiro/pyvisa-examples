@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 DC voltage measurement with Fluke 8558
 
 Connection

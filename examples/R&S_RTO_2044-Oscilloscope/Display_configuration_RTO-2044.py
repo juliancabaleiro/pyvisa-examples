@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 Test display functionalities does not make any measurements.
 Create figures, put labels in plots, show the remote screen with messages.
 

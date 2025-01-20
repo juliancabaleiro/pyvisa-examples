@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 How to generate Arbitrary Doble exponential/LI-Impulse
 Waveform with HP-3245A Universal Source using PyVISA.
 This device use HP-IB a old version of GP-IB 

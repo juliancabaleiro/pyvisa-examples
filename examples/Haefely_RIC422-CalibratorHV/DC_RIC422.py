@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 In this example you can see how to control the DC output.
 
 Press F1 and turn on the insturment to acces a remote menu config

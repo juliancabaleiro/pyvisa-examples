@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 Simple acquisition Fluke 8558A in current Digitize mode
 with high speed transfer data.
 Transfer the data in binary form, using USB 

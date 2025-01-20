@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 In this example you can see how to control the Lighting Impulse 
 output, with the calibration of the load and the calibrated output.
 

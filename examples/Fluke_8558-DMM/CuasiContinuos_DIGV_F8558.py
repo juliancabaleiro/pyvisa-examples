@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 Cuasi-Continuos acquisition with Fluke 8558 in digitize mode,
 The objective is extract data periodically without missing points
 

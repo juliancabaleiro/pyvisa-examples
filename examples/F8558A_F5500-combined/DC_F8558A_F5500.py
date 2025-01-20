@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 DC linearity using Fluke 5500 and Fluke 8558A
 and save the data in .xlsx
 """

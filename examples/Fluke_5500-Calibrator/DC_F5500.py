@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 Simple DC voltage sweep using a Fluke 5500 Multiprocess calibrator
 """
 

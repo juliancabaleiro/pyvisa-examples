@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 Simple live update using dash and PyVISA for AC measurement from HP34401.
 The objective is obtain a fluid live update.
 Use a subprocess to control the instrument and communicate with dash

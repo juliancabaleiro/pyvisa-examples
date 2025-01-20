@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 Simple acquisition Fluke 8558A in voltage Digitize mode.
 query method
 

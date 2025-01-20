@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 How to control this HP3445A Universal Source using PyVISA.
 This device use HP-IB a old version of GP-IB 
 for this reason have different commands and 

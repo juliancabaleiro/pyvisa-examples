@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 How take measurements and the statistic with R&S RTO 2044
 with a complet configuration and using the High definition mode
 

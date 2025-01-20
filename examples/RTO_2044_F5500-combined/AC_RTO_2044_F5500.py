@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 AC caracterization of the specific probe using a RTO 2044 oscilloscope and FLuke 5500 calibrator
 and save the data in .xlsx file
 

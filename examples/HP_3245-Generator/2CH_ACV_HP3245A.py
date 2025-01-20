@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 How to generate one sine wave per channel and connect
 CHA in rear panel, CHB in front pannel and open the channels
 separatly with HP3445A Universal Source using PyVISA.

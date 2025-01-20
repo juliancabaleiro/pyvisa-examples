@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 This code show how to generate a AC voltage waveform and change the frequency (in frequency sweep) 
 with the Tektronix AFG1062 connected through USB
 """

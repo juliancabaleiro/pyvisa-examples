@@ -1,4 +1,7 @@
 """
+@author: Julian Cabaleiro
+@repository: https://github.com/juliancabaleiro/pyvisa-examples
+
 How acquire a waveforms and take screen shots with R&S RTO 2044 
 
 Input
