@@ -1,6 +1,6 @@
 # pyvisa-examples
 
-This repository provides a lot of examples on how to use instruments that support IEEE488.2/SCPI with python 3 using [PyVISA](https://pyvisa.readthedocs.io/en/latest/). Depend on the instrument you can connect with this trough RS-232, GPIB, USB, Ethernet, etc. this is quasi transparent for the user. Most of the examples were developed using GPIB-USB-HS+ adapter, or via USB.  
+This repository provides a lot of examples on how to use instruments that support IEEE488.2/SCPI with python 3 using [PyVISA](https://pyvisa.readthedocs.io/en/latest/). Depend on the instrument you can connect with this trough RS-232, GPIB, USB, Ethernet, etc. this is quasi transparent for the user. Most of the examples were developed using GPIB-USB-HS+ adapter, Ethernet or via USB.  
 The idea is to share examples with the simplest possible use of python so as to not lose focus on the programming flow of the device.
 
 ## Overview
@@ -32,6 +32,13 @@ Click on the instrument and then on *test panel button* to communicate with the 
 __NOTE:__ some old fashioned instruments (not SCPI compliant) might require the use of `*ID?`. Also, remember to check the required termination characters in case these commands do not work. 
 
 ![Alt Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/test-visa-panel.png)
+
+#### Ethernet communication
+
+For use an instrument using the Ethernet connection, you can connect the instrument directly with the PC (some instruments use a crossover cable, see the manual) or using a router with normal cable.  
+Typically, you need to manually configure the network in the instrument (IP address, etc.) and after add the device in NI-MAX in **Network Devices** here you can use automatic or manually detection.
+
+![Alt Text](https://github.com/juliancabaleiro/pyvisa-examples/blob/main/doc/images/ethernet-inst.png)
 
 ### Python
 
